@@ -1,0 +1,8 @@
+--- #crating multiple users
+- hosts: all
+  user: mastan
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  roles:
+    - webserver

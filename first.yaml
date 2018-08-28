@@ -1,0 +1,13 @@
+--- #my first yaml playbook
+- hosts: all
+  user: mastan
+  connection: ssh
+  sudo: yes
+  gather_facts: yes
+  tasks:
+    - name: installing apached two on both the systems
+      action: apt name=apache2 state=latest
+      notify: Restart Apache
+  handlers:
+    - name: Restart Apache
+      action: service name=apache2 state=restarted

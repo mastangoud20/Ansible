@@ -1,0 +1,13 @@
+--- #crating multiple users
+- hosts: all
+  user: mastan
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+   - name: creating multi users with loop
+     user: name={{item}} state=absent
+     with_items:
+      - user1
+      - user2
+      - user3

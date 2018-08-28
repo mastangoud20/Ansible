@@ -1,0 +1,22 @@
+--- #crating multiple users
+- hosts: all
+  user: mastan
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+   - name: firstcommand   
+     command: echo {{item}}
+     with_items: [0, 2, 4, 6, 8, 10]
+     when: item>6
+     tags:
+       - firstcommand
+
+   - name: secondcommand
+     raw: ls /home/mastan > /home/mastan/list.log
+     tags:
+       - secondcommand
+   - name: thirdtask
+     command: touch abc
+     tags:
+       - thirdtask

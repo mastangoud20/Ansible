@@ -1,0 +1,15 @@
+--- #wait for the port to listen
+- hosts: all
+  user: mastan
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+    - name: install appache on centos
+      apt: pkg=apache2 state=latest
+  
+    - name: install apache on ubuntu
+      apt: pkg=gcc state=latest
+    - name: wait for the service to start listening on port 80
+      wait_for:
+        path: /home/mastan/waitforme

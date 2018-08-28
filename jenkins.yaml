@@ -1,0 +1,10 @@
+--- #jenkins installation on both the systems
+- hosts: all
+  user: mastan
+  connection: ssh
+  sudo: yes
+  gather_facts: yes
+  tasks:
+     - name: jenkins installation
+       action: apt name=jenkins state=latest
+

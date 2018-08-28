@@ -1,0 +1,7 @@
+- name: install appache on centos
+  apt: pkg=apache2 state=latest
+ # when: ansible_os_family=="Ubuntu"
+- name: install apache on ubuntu
+  apt: pkg=gcc state=latest
+  notify: Restart Apache
+  #when: ansible_os_family=="Ubuntu"
